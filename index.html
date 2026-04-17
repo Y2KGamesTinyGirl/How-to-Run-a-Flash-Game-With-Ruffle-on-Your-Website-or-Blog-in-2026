@@ -4,15 +4,20 @@
   <meta charset="UTF-8">
   <title>Meu Jogo SWF</title>
 
-  <!-- Ruffle carregado direto da internet -->
+  <!-- Carrega o Ruffle automaticamente (sem download) -->
   <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      text-align: center;
       background: #111;
       color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 20px;
     }
 
     #game {
@@ -22,6 +27,7 @@
     }
   </style>
 </head>
+
 <body>
 
 <h1>Meu Jogo SWF</h1>
@@ -29,18 +35,21 @@
 <div id="game"></div>
 
 <script>
+  // Inicializa o Ruffle
   window.RufflePlayer = window.RufflePlayer || {};
 
   window.addEventListener("load", () => {
     const ruffle = window.RufflePlayer.newest();
     const player = ruffle.createPlayer();
 
+    // coloca o player na tela
     document.getElementById("game").appendChild(player);
 
+    // tamanho do jogo
     player.style.width = "800px";
     player.style.height = "600px";
 
-    // nome do seu arquivo SWF (tem que estar no GitHub)
+    // 🔥 AQUI você coloca o nome do seu arquivo SWF
     player.load("papastacomia.swf");
   });
 </script>
