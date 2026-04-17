@@ -2,32 +2,47 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Jogo Flash</title>
+  <title>Meu Jogo SWF</title>
 
+  <!-- Ruffle carregado direto da internet -->
   <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 
   <style>
     body {
-      margin: 0;
-      background: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #111;
+      color: white;
+    }
+
+    #game {
+      margin: 20px auto;
+      width: 800px;
+      height: 600px;
     }
   </style>
 </head>
 <body>
 
+<h1>Meu Jogo SWF</h1>
+
+<div id="game"></div>
+
 <script>
-  const ruffle = window.RufflePlayer.newest();
-  const player = ruffle.createPlayer();
-  document.body.appendChild(player);
+  window.RufflePlayer = window.RufflePlayer || {};
 
-  player.style.width = "800px";
-  player.style.height = "600px";
+  window.addEventListener("load", () => {
+    const ruffle = window.RufflePlayer.newest();
+    const player = ruffle.createPlayer();
 
-  player.load("https://drive.google.com/uc?export=download&id=1tqp3Vc-Lw2loHZJ0N749yycDWEJdXVMj");
+    document.getElementById("game").appendChild(player);
+
+    player.style.width = "800px";
+    player.style.height = "600px";
+
+    // nome do seu arquivo SWF (tem que estar no GitHub)
+    player.load("jogo.swf");
+  });
 </script>
 
 </body>
