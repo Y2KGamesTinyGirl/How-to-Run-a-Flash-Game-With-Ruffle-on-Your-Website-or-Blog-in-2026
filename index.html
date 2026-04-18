@@ -42,6 +42,11 @@
     const ruffle = window.RufflePlayer.newest();
     const player = ruffle.createPlayer();
 
+    player.config = {
+  scale: "noscale",
+  letterbox: "off"
+};
+
     // coloca o player na tela
     document.getElementById("game").appendChild(player);
 
