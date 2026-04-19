@@ -1,5 +1,121 @@
 <!DOCTYPE html>
+<html lang="pt-BR"><!DOCTYPE html>
 <html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo Flash com Like</title>
+
+    <script src="https://unpkg.com/@ruffle-rs/ruffle/ruffle.js"></script>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fab3dd; /* Cor de fundo da página */
+        }
+
+        #game-container {
+            width: 800px;
+            height: 600px;
+            position: relative;
+            top: 50px;
+            left: 140px;
+        }
+
+        h1 {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+            width: 100%;
+            color: #333;
+        }
+
+        /* Estilo do botão de like */
+        #like-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff; /* Fundo branco */
+            border: 2px solid #fab3dd; /* Bordas sutis */
+            padding: 8px 16px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 26px;
+            color: #333;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Estilo ao passar o mouse */
+        #like-button:hover {
+            background-color: rgba(255, 165, 0, 0.8);
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        #like-button:focus {
+            outline: none;
+        }
+
+        #like-button span {
+            font-size: 32px;
+        }
+
+        /* Estilo do número de likes */
+        #like-count {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-weight: bold;
+            font-size: 18px;
+            color: #FF69B4;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nome do Jogo</h1>
+    <div id="game-container"></div>
+
+    <button id="like-button">
+        <span>🍭</span><span id="like-count">0</span>
+    </button>
+
+    <script>
+        window.addEventListener("load", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+
+            const container = document.getElementById("game-container");
+            container.appendChild(player);
+
+            player.load("Puanli_Giydirme_21.swf");
+        });
+
+        // Variáveis
+        let likeCount = localStorage.getItem("likeCount") ? parseInt(localStorage.getItem("likeCount")) : 0;
+        const likeButton = document.getElementById("like-button");
+        const likeCountElement = document.getElementById("like-count");
+
+        // Atualiza o contador de curtidas com o valor armazenado
+        likeCountElement.textContent = likeCount;
+
+        // Função para o botão de like
+        likeButton.addEventListener("click", () => {
+            if (likeCount === 0) { // Impede mais de 1 like
+                likeCount++;
+                localStorage.setItem("likeCount", likeCount); // Armazena o número de curtidas no localStorage
+                likeCountElement.textContent = likeCount; // Atualiza o contador
+                likeButton.disabled = true; // Desabilita o botão após o primeiro clique
+                likeButton.style.backgroundColor = "#D3D3D3"; // Muda a cor para indicar que foi clicado
+                likeButton.style.cursor = "not-allowed"; // Muda o cursor para indicar que o botão está desativado
+            }
+        });
+    </script>
+</body>
+</html>
 <head>
     <meta charset="UTF-8">
     <title></title>
@@ -13,15 +129,15 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #fab3dd;
+            background-color: #fab3dd; /* Cor de fundo da página */
         }
 
         #game-container {
-            width: 1024px;  /* Novo tamanho de largura */
-            height: 768px;  /* Novo tamanho de altura */
-            position: relative;
-            top: 50px;
-            left: 140px;
+            width: 800px;
+            height: 600px;
+            position: relative; /* Permite mover o jogo */
+            top: 50px; /* Distância do topo */
+            left: 140px; /* Distância da esquerda */
         }
 
         h1 {
@@ -29,7 +145,7 @@
             top: 20px;
             text-align: center;
             width: 100%;
-            color: #333;
+            color: #333; /* Cor do título */
         }
     </style>
 </head>
@@ -43,11 +159,6 @@
             const player = ruffle.createPlayer();
 
             const container = document.getElementById("game-container");
-            
-            // Ajustando a largura e altura do player
-            player.style.width = "800px";  // Novo tamanho de largura
-            player.style.height = "800px";  // Novo tamanho de altura
-
             container.appendChild(player);
 
             player.load("Puanli_Giydirme_21.swf");
@@ -55,3 +166,5 @@
     </script>
 </body>
 </html>
+
+este é meu codigo, ele está funcional, pode adicionar um botão de like com fundo branco com emoji de pirulito e contador de likes junto. Pode limitar o numero de curtidas a 1 por pessoa e fazer com que ele não resete ao recarregar a pagina?
