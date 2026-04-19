@@ -155,6 +155,29 @@
     likeCount++;
     document.getElementById("like-counter").textContent = likeCount; // Update the like count
   });
+
+  // Fullscreen functionality
+  document.getElementById("game").addEventListener('dblclick', () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen();
+    }
+  });
+
+  // When the game enters fullscreen, adjust the player's size
+  document.addEventListener('fullscreenchange', () => {
+    const player = document.querySelector('#game iframe');
+    if (document.fullscreenElement) {
+      // Adjust to full screen size
+      player.style.width = "100vw";
+      player.style.height = "100vh";
+    } else {
+      // Reset to default size
+      player.style.width = "680px";
+      player.style.height = "600px";
+    }
+  });
 </script>
 
 </body>
