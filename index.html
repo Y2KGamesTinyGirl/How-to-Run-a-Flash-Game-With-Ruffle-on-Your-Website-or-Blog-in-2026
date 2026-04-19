@@ -32,32 +32,46 @@
             color: #333; /* Cor do título */
         }
 
-        /* Estilo do contador de likes */
-        #like-counter {
+        /* Estilo do botão de likes */
+        #like-button {
             position: absolute;
-            bottom: 10px;
-            width: 100%;
-            text-align: center;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 12px 24px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 24px;
+            font-size: 20px;
             color: #333;
-            font-weight: bold;
-            background-color: rgba(255, 255, 255, 0.6);
-            padding: 5px;
-            border-radius: 10px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        #like-counter span {
-            font-size: 28px;
+        /* Estilo ao passar o mouse */
+        #like-button:hover {
+            background-color: rgba(255, 165, 0, 0.8);
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        #like-button:focus {
+            outline: none;
+        }
+
+        #like-button span {
+            font-size: 24px;
         }
     </style>
 </head>
 <body>
     <h1></h1>
     <div id="game-container"></div>
-    <div id="like-counter">
-        <span>🌺 0 Likes</span>
-    </div>
+
+    <button id="like-button">
+        <span>🌺 Curtiu?</span>
+    </button>
 
     <script>
         window.addEventListener("load", () => {
@@ -68,16 +82,12 @@
             container.appendChild(player);
 
             player.load("Puanli_Giydirme_21.swf");
+        });
 
-            // Simulação de contador de likes
-            let likeCount = 0;
-            const likeCounterElement = document.getElementById("like-counter");
-
-            // Função para aumentar os likes
-            setInterval(() => {
-                likeCount++;
-                likeCounterElement.innerHTML = `<span>🌺 ${likeCount} Likes</span>`;
-            }, 1000); // Aumenta o contador a cada 1 segundo (simulação)
+        // Função para o botão de like
+        const likeButton = document.getElementById("like-button");
+        likeButton.addEventListener("click", () => {
+            alert("Você deu um like! 🌺");
         });
     </script>
 </body>
