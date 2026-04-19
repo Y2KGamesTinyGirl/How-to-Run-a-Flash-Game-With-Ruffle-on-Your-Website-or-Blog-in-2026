@@ -1,25 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flash Game with Ruffle</title>
-    <!-- Include Ruffle -->
-    <script src="https://unpkg.com/ruffle.js"></script>
+    <title>Jogo Flash com Ruffle</title>
+    <!-- Link para o Ruffle via CDN -->
+    <script src="https://unpkg.com/ruffle-player@latest/dist/ruffle.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #flash-container {
+            width: 800px; /* Ajuste o tamanho conforme necessário */
+            height: 600px; /* Ajuste o tamanho conforme necessário */
+        }
+    </style>
 </head>
 <body>
-    <h1>Gloomy Day</h1>
-    <!-- Create the object to load the SWF game -->
-    <div id="flash-game">
-        <script>
-            // Using Ruffle to load the SWF file
-            window.addEventListener('load', function() {
-                const ruffle = window.RufflePlayer.newest();
-                const player = ruffle.createPlayer();
-                document.getElementById("flash-game").appendChild(player);
-                player.load("Puanli_Giydirme_21.swf");  // Replace this with your actual SWF file name
-            });
-        </script>
+    <div id="flash-container">
+        <!-- Aqui o Ruffle irá carregar o Flash -->
     </div>
+
+    <script>
+        // Inicializa o Ruffle e substitui o Flash embutido
+        const ruffle = window.RufflePlayer.newest();
+        const flashContainer = document.getElementById('flash-container');
+
+        // Cria o player Ruffle
+        const player = ruffle.createPlayer();
+        flashContainer.appendChild(player);
+
+        // Carrega o jogo Flash (.swf) que você fez upload
+        player.load('jogo.swf');  // Substitua "jogo.swf" pelo nome correto do seu arquivo
+    </script>
 </body>
 </html>
