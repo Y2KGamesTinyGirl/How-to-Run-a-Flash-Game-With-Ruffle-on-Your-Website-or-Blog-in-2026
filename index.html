@@ -42,7 +42,7 @@
             border: none;
             padding: 12px 24px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 20px;
+            font-size: 30px; /* Aumentei o tamanho do emoji */
             color: #333;
             border-radius: 30px;
             cursor: pointer;
@@ -61,7 +61,7 @@
         }
 
         #like-button span {
-            font-size: 24px;
+            font-size: 36px;
         }
 
         /* Estilo do número de hibiscos */
@@ -70,6 +70,20 @@
             font-size: 24px;
             color: #FF6347; /* Cor do hibisco */
         }
+
+        /* Estilo da mensagem no bottom */
+        #message {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 10px;
+            display: none; /* Inicialmente escondido */
+        }
     </style>
 </head>
 <body>
@@ -77,8 +91,10 @@
     <div id="game-container"></div>
 
     <button id="like-button">
-        <span>Leave me a Hibiscus </span><span id="hibiscus-count">0</span>
+        <span>🍭</span><span id="hibiscus-count">0</span>
     </button>
+
+    <div id="message">Hey, a lollipop, thank you!</div>
 
     <script>
         window.addEventListener("load", () => {
@@ -91,14 +107,23 @@
             player.load("Puanli_Giydirme_21.swf");
         });
 
-        // Função para o botão de "Leave me a Hibiscus"
+        // Função para o botão de "pirulito"
         let hibiscusCount = 0;
         const likeButton = document.getElementById("like-button");
         const hibiscusCountElement = document.getElementById("hibiscus-count");
+        const messageElement = document.getElementById("message");
 
         likeButton.addEventListener("click", () => {
             hibiscusCount++;
             hibiscusCountElement.textContent = hibiscusCount; // Atualiza o contador
+
+            // Exibe a mensagem de agradecimento
+            messageElement.style.display = "block";
+
+            // Esconde a mensagem após 3 segundos
+            setTimeout(() => {
+                messageElement.style.display = "none";
+            }, 3000);
         });
     </script>
 </body>
