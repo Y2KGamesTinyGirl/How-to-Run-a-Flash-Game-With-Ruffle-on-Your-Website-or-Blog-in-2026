@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Meu Jogo Flash</title>
-    <!-- Ruffle CDN - Carrega o emulador automaticamente -->
-    <script src="https://unpkg.com"></script>
+
+    <script src="https://unpkg.com/@ruffle-rs/ruffle/ruffle.js"></script>
 </head>
 <body>
     <h1>Nome do Jogo</h1>
-    <div id="game-container"></div>
+    <div id="game-container" style="width:800px;height:600px;"></div>
 
     <script>
-        window.RufflePlayer = window.RufflePlayer || {};
-        window.addEventListener("load", (event) => {
+        window.addEventListener("load", () => {
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
+
             const container = document.getElementById("game-container");
             container.appendChild(player);
-            // Mude 'SEU-JOGO.swf' para o nome exato do seu arquivo
-            player.load({ url: "Puanli_Giydirme_21.swf" });
+
+            player.load("Puanli_Giydirme_21.swf");
         });
     </script>
 </body>
