@@ -17,11 +17,11 @@
         }
 
         #game-container {
-            width: 800px;
-            height: 600px;
-            position: relative;
-            top: 50px;
-            left: 140px;
+            width: 1000px;
+            height: 800px;
+            position: relative; /* Permite mover o jogo */
+            top: 50px; /* Distância do topo */
+            left: 140px; /* Distância da esquerda */
         }
 
         h1 {
@@ -38,15 +38,15 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
-            padding: 12px 24px;
+            background-color: #fff; /* Mais branco */
+            border: 2px solid #fab3dd; /* Bordas sutis */
+            padding: 8px 16px; /* Reduzi o tamanho */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 30px; /* Tamanho do emoji */
+            font-size: 26px; /* Tamanho do emoji reduzido */
             color: #333;
             border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
@@ -61,15 +61,16 @@
         }
 
         #like-button span {
-            font-size: 36px; /* Tamanho do emoji */
+            font-size: 32px; /* Tamanho do emoji do pirulito */
         }
 
         /* Estilo do número de likes */
         #like-count {
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fonte mais divertida */
             font-weight: bold;
-            font-size: 20px;
-            color: #FF6347; /* Cor do texto */
-            margin-left: 10px;
+            font-size: 18px; /* Tamanho do contador reduzido */
+            color: #FF69B4; /* Cor rosa */
+            margin-left: 8px;
         }
 
     </style>
