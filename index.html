@@ -12,31 +12,41 @@
       margin: 0;
       padding: 0;
       height: 100%;
-    }
-
-    body {
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       background: url('https://preview.colorkit.co/color/f28dcd.png?size=wallpaper&static=true') no-repeat center center fixed;
       background-size: cover;
       color: white;
       text-align: center;
-      height: 100%;
     }
 
     h1 {
-      margin: 20px;
+      margin: 10px;
       font-size: 24px;
     }
 
     #game {
-      width: 680px;
-      height: 600px;
-      margin: 10px;
+      position: relative;
+      width: 680px; /* Original width */
+      height: 600px; /* Original height */
       background-color: black;
-      cursor: pointer;  /* Shows that the game area is clickable */
+      cursor: pointer; /* Shows that the game area is clickable */
+      overflow: hidden; /* Prevents overflow */
+    }
+
+    /* Ensures the game scales properly */
+    #game iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Ensures the game keeps the aspect ratio */
+    }
+
+    /* When the game is in fullscreen mode */
+    #game.fullscreen iframe {
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain;
     }
   </style>
 </head>
@@ -74,12 +84,16 @@
     gameContainer.addEventListener("click", () => {
       if (gameContainer.requestFullscreen) {
         gameContainer.requestFullscreen(); // For modern browsers
+        gameContainer.classList.add("fullscreen");  // Add fullscreen class to apply fullscreen styles
       } else if (gameContainer.mozRequestFullScreen) { // For Firefox
         gameContainer.mozRequestFullScreen();
+        gameContainer.classList.add("fullscreen");
       } else if (gameContainer.webkitRequestFullscreen) { // For Chrome/Safari
         gameContainer.webkitRequestFullscreen();
+        gameContainer.classList.add("fullscreen");
       } else if (gameContainer.msRequestFullscreen) { // For IE/Edge
         gameContainer.msRequestFullscreen();
+        gameContainer.classList.add("fullscreen");
       }
     });
   });
