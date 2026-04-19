@@ -33,7 +33,7 @@
       text-align: center;
     }
 
-    /* Glass effect with thicker orange border */
+    /* Glass effect */
     #game {
       width: 680px;
       height: 600px;
@@ -41,23 +41,92 @@
       justify-content: center;
       align-items: center;
 
-      /* glass effect */
       background: rgba(0, 0, 0, 0.35);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
 
-      /* 🔶 Thicker border */
-      border: 8px solid rgba(255, 122, 0, 0.75);
-      border-radius: 22px;
-
-      /* 🔥 Stronger glow to match */
-      box-shadow:
-        0 0 30px rgba(255, 122, 0, 0.45),
-        0 0 60px rgba(255, 122, 0, 0.25),
-        inset 0 0 14px rgba(255, 122, 0, 0.2);
-
+      border-radius: 18px;
       overflow: hidden;
       box-sizing: border-box;
+
+      position: relative;
+    }
+
+    /* 🔷 PIXEL BORDER ANIMADA */
+    #game::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 10px; /* grossura da borda pixel */
+
+      /* camada de pixels (efeito quadriculado) */
+      background: 
+        linear-gradient(90deg, #ff7a00 50%, transparent 50%),
+        linear-gradient(#ff7a00 50%, transparent 50%);
+      background-size: 12px 12px;
+
+      /* deixa só a borda aparecer */
+      -webkit-mask: 
+        linear-gradient(#000 0 0) content-box, 
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+
+      border-radius: 18px;
+
+      /* animação */
+      animation: pixelGlow 1.2s linear infinite;
+
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    /* ✨ animação de brilho pixel */
+    @keyframes pixelGlow {
+      0% {
+        filter: brightness(1) saturate(1);
+      }
+      50% {
+        filter: brightness(1.6) saturate(1.4);
+      }
+      100% {
+        filter: brightness(1) saturate(1);
+      }
+    }
+
+    /* Neon border effect */
+    #game::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 8px;
+      border: 4px solid #ff5e00;
+      border-radius: 18px;
+
+      /* Neon glow effect */
+      box-shadow:
+        0 0 15px #ff5e00,
+        0 0 30px #ff5e00,
+        0 0 45px #ff5e00;
+
+      pointer-events: none;
+      opacity: 0.8;
+      animation: neonPulse 1.5s infinite alternate;
+    }
+
+    @keyframes neonPulse {
+      0% {
+        box-shadow:
+          0 0 15px #ff5e00,
+          0 0 30px #ff5e00,
+          0 0 45px #ff5e00;
+      }
+      100% {
+        box-shadow:
+          0 0 30px #ff5e00,
+          0 0 50px #ff5e00,
+          0 0 75px #ff5e00;
+      }
     }
 
     /* Style for the like button and counter */
@@ -155,10 +224,6 @@
     likeCount++;
     document.getElementById("like-counter").textContent = likeCount; // Update the like count
   });
-</script>
-
-</body>
-</html>
 </script>
 
 </body>
