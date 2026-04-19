@@ -12,38 +12,52 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
         }
         #game-container {
-            width: 800px; /* Defina o tamanho do seu jogo aqui */
+            width: 800px; /* Ajuste a largura conforme o tamanho do seu jogo */
             margin: 20px auto;
             border: 2px solid #000;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <h1>Jogo Flash com Ruffle</h1>
-    <p>Carregando jogo...</p>
+    <p>Carregando seu jogo Flash... Se ele não carregar, tente atualizar a página ou usar outro navegador.</p>
     
     <!-- Contêiner onde o jogo Flash será exibido -->
-    <div id="game-container"></div> <!-- Aqui, o Ruffle irá injetar o player -->
-    
+    <div id="game-container"></div> <!-- O player Ruffle será injetado aqui -->
+
     <script>
-        // Inicializando o Ruffle e garantindo que o conteúdo será carregado
+        // Inicializa o Ruffle Player
         const ruffle = window.RufflePlayer.newest();
         const container = document.getElementById("game-container");
 
-        // Criando o player Ruffle e carregando o SWF
+        // Cria o player do Ruffle
         const player = ruffle.createPlayer();
-        container.appendChild(player);
-        player.load("seu-jogo.swf"); // Substitua "seu-jogo.swf" pelo caminho do seu arquivo
 
-        // Verifique se há algum erro no console
+        // Anexa o player ao contêiner
+        container.appendChild(player);
+
+        // Substitua 'seu-jogo.swf' pelo caminho do seu arquivo SWF
+        player.load("seu-jogo.swf"); // Coloque o caminho correto do seu jogo Flash
+
+        // Verifique se o jogo carregou corretamente
         player.onload = function() {
             console.log("Jogo carregado com sucesso!");
         }
 
+        // Caso haja um erro no carregamento do jogo
         player.onerror = function(error) {
-            console.log("Erro ao carregar o jogo:", error);
+            console.error("Erro ao carregar o jogo:", error);
+            alert("Não foi possível carregar o jogo Flash. Verifique o arquivo SWF ou tente outro navegador.");
         }
     </script>
 </body>
