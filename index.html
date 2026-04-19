@@ -24,14 +24,14 @@
 
     h1 {
       margin: 20px;
-      font-size: 30px;  /* Increase font size for better visibility */
+      font-size: 30px;
       text-align: center;
     }
 
     #game {
-      width: 680px;  /* Set the width of the game */
-      height: 600px; /* Set the height of the game */
-      background-color: black; /* Add background color to game area */
+      width: 680px;
+      height: 600px;
+      background-color: black;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -73,6 +73,10 @@
       color: #ff5f5f;
     }
   </style>
+  
+  <!-- Importing Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
@@ -83,7 +87,7 @@
 
 <!-- Like button with heart icon and counter -->
 <button id="like-button">
-  <i class="fa fa-heart"></i> <!-- Heart icon -->
+  <span class="material-icons">favorite</span> <!-- Heart icon from Material Icons -->
   <span id="like-counter">0</span> <!-- Like counter -->
 </button>
 
@@ -118,9 +122,6 @@
     document.getElementById("like-counter").textContent = likeCount; // Update the like count
   });
 </script>
-
-<!-- Font Awesome for the heart icon -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 </body>
 </html>
