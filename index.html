@@ -22,10 +22,6 @@
             position: relative;
             top: 50px;
             left: 140px;
-            border: 10px solid rgba(255, 165, 0, 0.8); /* Borda laranja */
-            border-radius: 15px; /* Borda arredondada */
-            backdrop-filter: blur(10px); /* Efeito glass */
-            box-shadow: 0 0 20px rgba(255, 165, 0, 0.6); /* Sombras para dar o efeito "glass" */
         }
 
         h1 {
@@ -33,13 +29,35 @@
             top: 20px;
             text-align: center;
             width: 100%;
+            color: #333; /* Cor do título */
+        }
+
+        /* Estilo do contador de likes */
+        #like-counter {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 24px;
             color: #333;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        #like-counter span {
+            font-size: 28px;
         }
     </style>
 </head>
 <body>
     <h1></h1>
     <div id="game-container"></div>
+    <div id="like-counter">
+        <span>🌺 0 Likes</span>
+    </div>
 
     <script>
         window.addEventListener("load", () => {
@@ -50,6 +68,16 @@
             container.appendChild(player);
 
             player.load("Puanli_Giydirme_21.swf");
+
+            // Simulação de contador de likes
+            let likeCount = 0;
+            const likeCounterElement = document.getElementById("like-counter");
+
+            // Função para aumentar os likes
+            setInterval(() => {
+                likeCount++;
+                likeCounterElement.innerHTML = `<span>🌺 ${likeCount} Likes</span>`;
+            }, 1000); // Aumenta o contador a cada 1 segundo (simulação)
         });
     </script>
 </body>
