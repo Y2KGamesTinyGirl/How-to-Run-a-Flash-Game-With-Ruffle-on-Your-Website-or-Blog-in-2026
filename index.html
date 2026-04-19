@@ -11,8 +11,9 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 90%;
+      height: 100%;
       display: flex;
+      flex-direction: column;  /* Organize the layout in a vertical stack */
       justify-content: center;
       align-items: center;
       background: url('https://preview.colorkit.co/color/f28dcd.png?size=wallpaper&static=true') no-repeat center center fixed;
@@ -23,7 +24,8 @@
 
     h1 {
       margin: 20px;
-      font-size: 24px;
+      font-size: 30px;  /* Increase font size for better visibility */
+      text-align: center; /* Ensure the title is centered */
     }
 
     #game {
@@ -35,6 +37,28 @@
       align-items: center;
     }
 
+    /* Style for like button */
+    #like-button {
+      background-color: #ff5f5f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    #like-button:hover {
+      background-color: #ff3333;
+    }
+
+    #like-message {
+      display: none;
+      margin-top: 10px;
+      font-size: 18px;
+      color: #ff5f5f;
+    }
   </style>
 </head>
 
@@ -43,6 +67,11 @@
 <h1>우울한 하루</h1>
 
 <div id="game"></div>
+
+<!-- Like button -->
+<button id="like-button">👍 Like</button>
+<!-- Message that appears when liked -->
+<div id="like-message">Thanks for liking the game!</div>
 
 <script>
   window.RufflePlayer = window.RufflePlayer || {};
@@ -64,6 +93,16 @@
     player.style.height = "100%";
 
     player.load("Puanli_Giydirme_21.swf");  // Your SWF file
+  });
+
+  // Handle Like button click
+  document.getElementById("like-button").addEventListener("click", () => {
+    // Show the like message when clicked
+    const likeMessage = document.getElementById("like-message");
+    likeMessage.style.display = "block";
+
+    // Optionally, you can hide the button after click or change it to something else
+    document.getElementById("like-button").style.display = "none";
   });
 </script>
 
