@@ -40,9 +40,9 @@
             transform: translateX(-50%);
             background-color: rgba(255, 255, 255, 0.8);
             border: none;
-            padding: 12px 24px;
+            padding: 10px 20px; /* Ajustei o tamanho do botão */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 30px; /* Aumentei o tamanho do emoji */
+            font-size: 28px; /* Diminuí o tamanho do emoji */
             color: #333;
             border-radius: 30px;
             cursor: pointer;
@@ -61,20 +61,20 @@
         }
 
         #like-button span {
-            font-size: 36px;
+            font-size: 32px; /* Diminuí o tamanho do emoji */
         }
 
         /* Estilo do número de hibiscos */
         #hibiscus-count {
             font-weight: bold;
-            font-size: 24px;
+            font-size: 20px; /* Diminuí o tamanho do contador */
             color: #FF6347; /* Cor do hibisco */
         }
 
-        /* Estilo da mensagem no bottom */
+        /* Estilo da mensagem no bottom com animação */
         #message {
             position: absolute;
-            bottom: 10px;
+            bottom: -50px; /* Começa fora da tela */
             width: 100%;
             text-align: center;
             font-size: 20px;
@@ -83,6 +83,16 @@
             padding: 10px;
             border-radius: 10px;
             display: none; /* Inicialmente escondido */
+            transform: translateY(50px); /* Efeito de deslocamento para a animação */
+            opacity: 0;
+            transition: all 0.5s ease-in-out;
+        }
+
+        /* Animação da mensagem */
+        #message.show {
+            bottom: 20px; /* Vai para a parte inferior */
+            transform: translateY(0);
+            opacity: 1; /* Aparece suavemente */
         }
     </style>
 </head>
@@ -117,12 +127,12 @@
             hibiscusCount++;
             hibiscusCountElement.textContent = hibiscusCount; // Atualiza o contador
 
-            // Exibe a mensagem de agradecimento
-            messageElement.style.display = "block";
+            // Exibe a mensagem com animação
+            messageElement.classList.add("show");
 
             // Esconde a mensagem após 3 segundos
             setTimeout(() => {
-                messageElement.style.display = "none";
+                messageElement.classList.remove("show");
             }, 3000);
         });
     </script>
