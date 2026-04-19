@@ -156,7 +156,7 @@
     document.getElementById("like-counter").textContent = likeCount; // Update the like count
   });
 
-  // Fullscreen functionality
+  // Fullscreen functionality (for the game itself)
   document.getElementById("game").addEventListener('dblclick', () => {
     if (document.fullscreenElement) {
       document.exitFullscreen();
@@ -165,17 +165,18 @@
     }
   });
 
-  // When the game enters fullscreen, adjust the player's size
+  // Adjust the game player on fullscreen change
   document.addEventListener('fullscreenchange', () => {
-    const player = document.querySelector('#game iframe');
+    const gameContainer = document.getElementById("game");
+
     if (document.fullscreenElement) {
-      // Adjust to full screen size
-      player.style.width = "100vw";
-      player.style.height = "100vh";
+      // On fullscreen, resize the game container and the player
+      gameContainer.style.width = "100vw"; // 100% of the viewport width
+      gameContainer.style.height = "100vh"; // 100% of the viewport height
     } else {
-      // Reset to default size
-      player.style.width = "680px";
-      player.style.height = "600px";
+      // When exiting fullscreen, reset the game container to its original size
+      gameContainer.style.width = "680px";
+      gameContainer.style.height = "600px";
     }
   });
 </script>
