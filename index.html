@@ -5,10 +5,27 @@
     <title>Meu Jogo Flash</title>
 
     <script src="https://unpkg.com/@ruffle-rs/ruffle/ruffle.js"></script>
+    
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Fundo claro */
+        }
+        #game-container {
+            width: 800px;
+            height: 600px;
+            background-color: #fff; /* Pode adicionar um fundo branco */
+        }
+    </style>
 </head>
 <body>
-    <h1>Nome do Jogo</h1>
-    <div id="game-container" style="width:800px;height:600px;"></div>
+    <h1 style="position: absolute; top: 20px; text-align: center; width: 100%;">Nome do Jogo</h1>
+
+    <div id="game-container"></div>
 
     <script>
         window.addEventListener("load", () => {
