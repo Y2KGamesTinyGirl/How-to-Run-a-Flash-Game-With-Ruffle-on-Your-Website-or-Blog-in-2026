@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -116,55 +115,3 @@
     </script>
 </body>
 </html>
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-
-    <script src="https://unpkg.com/@ruffle-rs/ruffle/ruffle.js"></script>
-
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #fab3dd; /* Cor de fundo da página */
-        }
-
-        #game-container {
-            width: 800px;
-            height: 600px;
-            position: relative; /* Permite mover o jogo */
-            top: 50px; /* Distância do topo */
-            left: 140px; /* Distância da esquerda */
-        }
-
-        h1 {
-            position: absolute;
-            top: 20px;
-            text-align: center;
-            width: 100%;
-            color: #333; /* Cor do título */
-        }
-    </style>
-</head>
-<body>
-    <h1></h1>
-    <div id="game-container"></div>
-
-    <script>
-        window.addEventListener("load", () => {
-            const ruffle = window.RufflePlayer.newest();
-            const player = ruffle.createPlayer();
-
-            const container = document.getElementById("game-container");
-            container.appendChild(player);
-
-            player.load("Puanli_Giydirme_21.swf");
-        });
-    </script>
-</body>
-</html>
-
-este é meu codigo, ele está funcional, pode adicionar um botão de like com fundo branco com emoji de pirulito e contador de likes junto. Pode limitar o numero de curtidas a 1 por pessoa e fazer com que ele não resete ao recarregar a pagina?
