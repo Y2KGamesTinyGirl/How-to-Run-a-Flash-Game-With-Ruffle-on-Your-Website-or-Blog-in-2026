@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo Flash - Emulado com Ruffle</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ruffle/0.2.0/ruffle.js"></script> <!-- Link do Ruffle -->
+    <title>Meu Jogo Flash</title>
+    <!-- Ruffle CDN - Carrega o emulador automaticamente -->
+    <script src="https://unpkg.com"></script>
 </head>
 <body>
-    <h1>Meu Jogo Flash</h1>
-    <div id="flash-container">
-        <script>
-            var ruffle = window.RufflePlayer.newest();
-            var container = document.getElementById("flash-container");
-            var player = ruffle.createPlayer();
+    <h1>Nome do Jogo</h1>
+    <div id="game-container"></div>
+
+    <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("load", (event) => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            const container = document.getElementById("game-container");
             container.appendChild(player);
-            player.load("Puanli_Giydirme_21.swf");  // Substitua 'seu-jogo.swf' pelo nome do seu arquivo SWF
-        </script>
-    </div>
+            // Mude 'SEU-JOGO.swf' para o nome exato do seu arquivo
+            player.load({ url: "Puanli_Giydirme_21.swf" });
+        });
+    </script>
 </body>
 </html>
