@@ -3,62 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo Flash com Ruffle</title>
-    <!-- Incluindo o Ruffle via CDN -->
-    <script src="https://unpkg.com/ruffle-web@latest/ruffle.min.js"></script>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        #game-container {
-            width: 800px; /* Ajuste a largura conforme o tamanho do seu jogo */
-            margin: 20px auto;
-            border: 2px solid #000;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            font-size: 16px;
-            color: #666;
-        }
-    </style>
+    <title>Jogo Flash - Emulado com Ruffle</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ruffle/0.2.0/ruffle.js"></script> <!-- Link do Ruffle -->
 </head>
 <body>
-    <h1>Jogo Flash com Ruffle</h1>
-    <p>Carregando seu jogo Flash... Se ele não carregar, tente atualizar a página ou usar outro navegador.</p>
-    
-    <!-- Contêiner onde o jogo Flash será exibido -->
-    <div id="game-container"></div> <!-- O player Ruffle será injetado aqui -->
-
-    <script>
-        // Inicializa o Ruffle Player
-        const ruffle = window.RufflePlayer.newest();
-        const container = document.getElementById("game-container");
-
-        // Cria o player do Ruffle
-        const player = ruffle.createPlayer();
-
-        // Anexa o player ao contêiner
-        container.appendChild(player);
-
-        // Substitua 'seu-jogo.swf' pelo caminho do seu arquivo SWF
-        player.load("Puanli_Giydirme_21.swf"); // Coloque o caminho correto do seu jogo Flash
-
-        // Verifique se o jogo carregou corretamente
-        player.onload = function() {
-            console.log("Jogo carregado com sucesso!");
-        }
-
-        // Caso haja um erro no carregamento do jogo
-        player.onerror = function(error) {
-            console.error("Erro ao carregar o jogo:", error);
-            alert("Não foi possível carregar o jogo Flash. Verifique o arquivo SWF ou tente outro navegador.");
-        }
-    </script>
+    <h1>Meu Jogo Flash</h1>
+    <div id="flash-container">
+        <script>
+            var ruffle = window.RufflePlayer.newest();
+            var container = document.getElementById("flash-container");
+            var player = ruffle.createPlayer();
+            container.appendChild(player);
+            player.load("Puanli_Giydirme_21.swf");  // Substitua 'seu-jogo.swf' pelo nome do seu arquivo SWF
+        </script>
+    </div>
 </body>
 </html>
