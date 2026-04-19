@@ -12,9 +12,6 @@
       margin: 0;
       padding: 0;
       height: 100%;
-    }
-
-    body {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -22,7 +19,6 @@
       background-size: cover;
       color: white;
       text-align: center;
-      height: 100%;
     }
 
     h1 {
@@ -31,26 +27,14 @@
     }
 
     #game {
-      position: relative;
-      width: 680px; /* Original width */
-      height: 600px; /* Original height */
-      background-color: black;
-      cursor: pointer; /* Shows that the game area is clickable */
+      width: 680px;  /* Set the width of the game */
+      height: 600px; /* Set the height of the game */
+      background-color: black; /* Add background color to game area */
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Ensures the SWF content stays proportionate */
-    #game iframe {
-      width: 100%;
-      height: 100%;
-      object-fit: contain; /* Keeps the aspect ratio of the game */
-    }
-
-    /* When the game is in fullscreen mode */
-    #game.fullscreen iframe {
-      width: 100vw;
-      height: 100vh;
-      object-fit: contain;
-    }
   </style>
 </head>
 
@@ -68,7 +52,7 @@
     const player = ruffle.createPlayer();
 
     player.config = {
-      scale: "noscale",  // Keeps original aspect ratio, no scaling
+      scale: "noscale",  // Keeps the original aspect ratio, no scaling
       letterbox: "off"   // Disables letterbox
     };
 
@@ -80,25 +64,6 @@
     player.style.height = "100%";
 
     player.load("Puanli_Giydirme_21.swf");  // Your SWF file
-
-    // Fullscreen functionality for the game container
-    const gameContainer = document.getElementById("game");
-
-    gameContainer.addEventListener("click", () => {
-      if (gameContainer.requestFullscreen) {
-        gameContainer.requestFullscreen(); // For modern browsers
-        gameContainer.classList.add("fullscreen");  // Add fullscreen class to apply fullscreen styles
-      } else if (gameContainer.mozRequestFullScreen) { // For Firefox
-        gameContainer.mozRequestFullScreen();
-        gameContainer.classList.add("fullscreen");
-      } else if (gameContainer.webkitRequestFullscreen) { // For Chrome/Safari
-        gameContainer.webkitRequestFullscreen();
-        gameContainer.classList.add("fullscreen");
-      } else if (gameContainer.msRequestFullscreen) { // For IE/Edge
-        gameContainer.msRequestFullscreen();
-        gameContainer.classList.add("fullscreen");
-      }
-    });
   });
 </script>
 
