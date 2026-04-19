@@ -1,143 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>우울한 하루</title>
+#game {
+  width: 680px;
+  height: 600px;
 
-  <!-- Automatically loads Ruffle (no download required) -->
-  <script src="https://unpkg.com/@ruffle-rs/ruffle@latest"></script>
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  <!-- Link to Google Fonts for Y2K style font and feminine font -->
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet"> <!-- Feminine font -->
+  /* glass effect */
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: url('https://preview.colorkit.co/color/f28dcd.png?size=wallpaper&static=true') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      text-align: center;
-      font-family: 'Press Start 2P', cursive; /* Y2K font */
-    }
+  /* orange glass border */
+  border: 3px solid rgba(255, 122, 0, 0.7);
+  border-radius: 22px;
 
-    h1 {
-      margin: 20px;
-      font-size: 30px;
-      text-align: center;
-    }
+  /* glow */
+  box-shadow:
+    0 0 20px rgba(255, 122, 0, 0.35),
+    inset 0 0 12px rgba(255, 122, 0, 0.15);
 
-    #game {
-      width: 680px;
-      height: 600px;
-      background-color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Style for the like button and counter */
-    #like-button {
-      position: fixed;
-      left: 20px; /* Positioned on the left side of the screen */
-      bottom: 20px; /* Distance from the bottom */
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      border-radius: 50%;
-      transition: background-color 0.3s;
-    }
-
-    #like-button:hover {
-      background-color: rgba(255, 95, 95, 0.2);
-    }
-
-    #like-button:focus {
-      outline: none;
-    }
-
-    #like-button span {
-      font-size: 24px;  /* Smaller size for heart */
-      margin-right: 5px; /* Space between heart emoji and number */
-    }
-
-    /* Like counter with the same font style as the text */
-    #like-counter {
-      font-size: 24px;  /* Adjusted to match the font size of the phrase */
-      color: #ff5f5f;
-      font-family: 'Dancing Script', cursive;  /* Feminine font */
-    }
-
-    /* Feminine font style for the text above the like button */
-    #love-text {
-      font-family: 'Dancing Script', cursive;
-      font-size: 24px;
-      color: #ff5f5f;
-      position: fixed;
-      left: 5px; /* Adjust to align on the left */
-      bottom: 70px; /* Position the phrase above the like button */
-      z-index: 2;
-      transform: translateX(0); /* Keep the text aligned */
-    }
-  </style>
-</head>
-
-<body>
-
-<h1>우울한 하루</h1>
-
-<div id="game"></div>
-
-<!-- Feminine text "I Love this Game" above the like button -->
-<div id="love-text">I Love this Game</div>
-
-<!-- Like button with heart emoji and counter -->
-<button id="like-button">
-  <span>❤️</span> <!-- Heart emoji -->
-  <span id="like-counter">0</span> <!-- Like counter -->
-</button>
-
-<script>
-  window.RufflePlayer = window.RufflePlayer || {};
-
-  window.addEventListener("load", () => {
-    const ruffle = window.RufflePlayer.newest();
-    const player = ruffle.createPlayer();
-
-    player.config = {
-      scale: "noscale",  // Keeps the original aspect ratio, no scaling
-      letterbox: "off"   // Disables letterbox
-    };
-
-    // Append the player to the #game container
-    document.getElementById("game").appendChild(player);
-
-    // Ensure the player fits the container
-    player.style.width = "100%";
-    player.style.height = "100%";
-
-    player.load("Puanli_Giydirme_21.swf");  // Your SWF file
-  });
-
-  // Like button functionality
-  let likeCount = 0;
-
-  // Handle Like button click
-  document.getElementById("like-button").addEventListener("click", () => {
-    likeCount++;
-    document.getElementById("like-counter").textContent = likeCount; // Update the like count
-  });
-</script>
-
-</body>
-</html>
+  /* safety */
+  overflow: hidden;
+  box-sizing: border-box;
+}
