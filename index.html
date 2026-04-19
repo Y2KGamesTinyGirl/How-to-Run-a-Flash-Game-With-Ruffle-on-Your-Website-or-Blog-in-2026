@@ -18,7 +18,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;  /* Align content to the top */
+      justify-content: center;
       background: url('https://preview.colorkit.co/color/f28dcd.png?size=wallpaper&static=true') no-repeat center center fixed;
       background-size: cover;
       color: white;
@@ -27,18 +27,16 @@
     }
 
     h1 {
-      margin: 10px;
+      margin: 20px;
       font-size: 24px;
     }
 
     #game {
-      width: 80vw;  /* Reduced the width */
-      max-width: 600px;  /* Maximum width */
-      height: 60vh;  /* Reduced height */
-      max-height: 500px;  /* Maximum height */
-      margin: 10px; /* Reduced margin between the game and page */
-      cursor: pointer;  /* Shows that the game can be clicked */
-      object-fit: contain; /* Ensures the game scales without cutting or stretching */
+      width: 680px;
+      height: 600px;
+      margin: 10px;
+      background-color: black;
+      cursor: pointer;  /* Shows that the game area is clickable */
     }
   </style>
 </head>
@@ -57,19 +55,20 @@
     const player = ruffle.createPlayer();
 
     player.config = {
-      scale: "noscale",  // Does not scale the content
+      scale: "noscale",  // Keeps original aspect ratio, no scaling
       letterbox: "off"   // Disables letterbox
     };
 
+    // Append the player to the #game container
     document.getElementById("game").appendChild(player);
 
-    // Adjusts the size of the game to fit the container
+    // Ensure the player fits the container
     player.style.width = "100%";
     player.style.height = "100%";
 
-    player.load("Puanli_Giydirme_21.swf");  // SWF file name
+    player.load("Puanli_Giydirme_21.swf");  // Your SWF file
 
-    // Function to enable fullscreen mode for the game
+    // Fullscreen functionality for the game container
     const gameContainer = document.getElementById("game");
 
     gameContainer.addEventListener("click", () => {
@@ -85,9 +84,6 @@
     });
   });
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
