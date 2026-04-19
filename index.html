@@ -1,97 +1,127 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ícone Interativo - Rolar Ergaminho</title>
-  
+  <title>우울한 하루</title>
+
+  <!-- Automatically loads Ruffle (no download required) -->
+  <script src="https://unpkg.com/@ruffle-rs/ruffle@latest"></script>
+
+  <!-- Link to Google Fonts for Y2K style font -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      text-align: center;
+    html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: url('https://preview.colorkit.co/color/f28dcd.png?size=wallpaper&static=true') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      font-family: 'Press Start 2P', cursive; /* Y2K font */
     }
 
-    /* Estilo do ícone de rolar */
-    #scroll-icon {
-      width: 100px;
-      height: 50px;
-      background-color: #d9b68e; /* cor de papel ou pergaminho */
-      border-radius: 10px;
-      position: relative;
-      cursor: pointer;
+    h1 {
+      margin: 20px;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    #game {
+      width: 680px;
+      height: 600px;
+      background-color: black;
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-top: 50px;
     }
 
-    #scroll-icon:after {
-      content: '📜'; /* Ícone de pergaminho */
-      font-size: 32px;
+    /* Style for like button */
+    #like-button {
+      position: fixed;
+      left: 20px; /* Positioned on the left side of the screen */
+      bottom: 20px; /* Distance from the bottom */
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border-radius: 50%;
+      transition: background-color 0.3s;
     }
 
-    /* Estilo do conteúdo que vai se revelar */
-    #scroll-content {
-      display: none; /* Inicialmente escondido */
-      width: 80%;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #fff4e1;
-      border: 2px solid #d9b68e;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
-      height: 200px;
-      font-size: 18px;
-      overflow-y: auto;
+    #like-button:hover {
+      background-color: rgba(255, 95, 95, 0.2);
     }
 
-    /* Animação de rolar */
-    .scroll-open {
-      display: block;
-      animation: openScroll 1s ease-in-out;
+    #like-button:focus {
+      outline: none;
     }
 
-    @keyframes openScroll {
-      0% {
-        transform: scaleY(0);
-      }
-      100% {
-        transform: scaleY(1);
-      }
+    #like-button span {
+      font-size: 40px;  /* Larger size for heart */
+      margin-right: 10px; /* Add space between heart emoji and number */
+    }
+
+    /* Like counter with Y2K font style */
+    #like-counter {
+      font-size: 24px;
+      color: #ff5f5f;
+      font-family: 'Press Start 2P', cursive;  /* Y2K style font */
     }
   </style>
 </head>
+
 <body>
 
-  <div id="scroll-icon"></div> <!-- Ícone de Pergaminho -->
-  
-  <div id="scroll-content">
-    <h2>Conteúdo do Pergaminho</h2>
-    <p>Este é o conteúdo revelado ao clicar no ícone do pergaminho. Você pode adicionar mais texto ou até mesmo outros elementos interativos aqui!</p>
-  </div>
+<h1>우울한 하루</h1>
 
-  <script>
-    // Seleciona o ícone e o conteúdo
-    const scrollIcon = document.getElementById("scroll-icon");
-    const scrollContent = document.getElementById("scroll-content");
+<div id="game"></div>
 
-    // Adiciona o evento de clique ao ícone
-    scrollIcon.addEventListener("click", () => {
-      // Se o conteúdo estiver oculto, mostramos e aplicamos a animação
-      if (scrollContent.style.display === "none") {
-        scrollContent.style.display = "block"; // Mostra o conteúdo
-        scrollContent.classList.add("scroll-open"); // Aplica a animação de abertura
-      } else {
-        scrollContent.style.display = "none"; // Esconde o conteúdo
-        scrollContent.classList.remove("scroll-open"); // Remove a animação de abertura
-      }
-    });
-  </script>
+<!-- Like button with heart emoji and counter -->
+<button id="like-button">
+  <span>❤️</span> <!-- Heart emoji -->
+  <span id="like-counter">0</span> <!-- Like counter -->
+</button>
+
+<script>
+  window.RufflePlayer = window.RufflePlayer || {};
+
+  window.addEventListener("load", () => {
+    const ruffle = window.RufflePlayer.newest();
+    const player = ruffle.createPlayer();
+
+    player.config = {
+      scale: "noscale",  // Keeps the original aspect ratio, no scaling
+      letterbox: "off"   // Disables letterbox
+    };
+
+    // Append the player to the #game container
+    document.getElementById("game").appendChild(player);
+
+    // Ensure the player fits the container
+    player.style.width = "100%";
+    player.style.height = "100%";
+
+    player.load("Puanli_Giydirme_21.swf");  // Your SWF file
+  });
+
+  // Like button functionality
+  let likeCount = 0;
+
+  // Handle Like button click
+  document.getElementById("like-button").addEventListener("click", () => {
+    likeCount++;
+    document.getElementById("like-counter").textContent = likeCount; // Update the like count
+  });
+</script>
 
 </body>
 </html>
