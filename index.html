@@ -115,6 +115,7 @@
 
 <h1>우울한 하루</h1>
 
+<!-- Game container for SWF -->
 <div id="game-container">
   <div id="game"></div>
 </div>
@@ -141,13 +142,15 @@
     };
 
     // Append the player to the #game container
-    document.getElementById("game").appendChild(player);
+    const gameContainer = document.getElementById("game");
+    gameContainer.appendChild(player);
 
-    // Ensure the player fits the container
+    // Set width and height
     player.style.width = "100%";
     player.style.height = "100%";
 
-    player.load("Puanli_Giydirme_21.swf");  // Your SWF file
+    // Load the SWF file (ensure path is correct)
+    player.load("Puanli_Giydirme_21.swf");  // Your SWF file (ensure it's accessible)
   });
 
   // Like button functionality
