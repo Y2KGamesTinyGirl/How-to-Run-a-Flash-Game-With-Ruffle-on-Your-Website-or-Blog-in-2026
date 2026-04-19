@@ -13,7 +13,7 @@
       padding: 0;
       height: 100%;
       display: flex;
-      flex-direction: column;  /* Organize the layout in a vertical stack */
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       background: url('https://preview.colorkit.co/color/f28dcd.png?size=wallpaper&static=true') no-repeat center center fixed;
@@ -25,7 +25,7 @@
     h1 {
       margin: 20px;
       font-size: 30px;  /* Increase font size for better visibility */
-      text-align: center; /* Ensure the title is centered */
+      text-align: center;
     }
 
     #game {
@@ -39,24 +39,37 @@
 
     /* Style for like button */
     #like-button {
-      background-color: #ff5f5f;
-      color: white;
+      position: fixed;
+      left: 20px; /* Positioned on the left side of the screen */
+      bottom: 20px; /* Distance from the bottom */
+      background-color: transparent;
+      color: #ff5f5f;
+      font-size: 30px;
       border: none;
-      padding: 10px 20px;
-      font-size: 18px;
       cursor: pointer;
-      border-radius: 5px;
-      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border-radius: 50%;
+      transition: background-color 0.3s;
     }
 
     #like-button:hover {
-      background-color: #ff3333;
+      background-color: rgba(255, 95, 95, 0.2);
     }
 
-    #like-message {
-      display: none;
-      margin-top: 10px;
-      font-size: 18px;
+    #like-button:focus {
+      outline: none;
+    }
+
+    #like-button i {
+      margin-right: 10px; /* Add space between heart icon and number */
+    }
+
+    /* Like counter */
+    #like-counter {
+      font-size: 24px;
       color: #ff5f5f;
     }
   </style>
@@ -68,10 +81,11 @@
 
 <div id="game"></div>
 
-<!-- Like button -->
-<button id="like-button">👍 Like</button>
-<!-- Message that appears when liked -->
-<div id="like-message">Thanks for liking the game!</div>
+<!-- Like button with heart icon and counter -->
+<button id="like-button">
+  <i class="fa fa-heart"></i> <!-- Heart icon -->
+  <span id="like-counter">0</span> <!-- Like counter -->
+</button>
 
 <script>
   window.RufflePlayer = window.RufflePlayer || {};
@@ -95,16 +109,18 @@
     player.load("Puanli_Giydirme_21.swf");  // Your SWF file
   });
 
+  // Like button functionality
+  let likeCount = 0;
+
   // Handle Like button click
   document.getElementById("like-button").addEventListener("click", () => {
-    // Show the like message when clicked
-    const likeMessage = document.getElementById("like-message");
-    likeMessage.style.display = "block";
-
-    // Optionally, you can hide the button after click or change it to something else
-    document.getElementById("like-button").style.display = "none";
+    likeCount++;
+    document.getElementById("like-counter").textContent = likeCount; // Update the like count
   });
 </script>
+
+<!-- Font Awesome for the heart icon -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 </body>
 </html>
