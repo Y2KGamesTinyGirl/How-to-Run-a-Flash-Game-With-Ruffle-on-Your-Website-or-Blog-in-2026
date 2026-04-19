@@ -21,26 +21,30 @@
     </style>
 </head>
 <body>
-    <h1>Jogo Flash</h1>
+    <h1>Jogo Flash com Ruffle</h1>
     <p>Carregando jogo...</p>
     
     <!-- Contêiner onde o jogo Flash será exibido -->
-    <div id="game-container">
-        <object data="Puanli_Giydirme_21.swf" type="application/x-shockwave-flash" width="800" height="600">
-            <param name="movie" value="seu-jogo.swf" />
-            <p>Seu navegador não suporta Flash. Utilize um navegador que suporte ou ative o Ruffle.</p>
-        </object>
-    </div>
-
+    <div id="game-container"></div> <!-- Aqui, o Ruffle irá injetar o player -->
+    
     <script>
-        // Inicialize o Ruffle emulador
+        // Inicializando o Ruffle e garantindo que o conteúdo será carregado
         const ruffle = window.RufflePlayer.newest();
         const container = document.getElementById("game-container");
 
-        // Carregar o jogo SWF
+        // Criando o player Ruffle e carregando o SWF
         const player = ruffle.createPlayer();
         container.appendChild(player);
-        player.load("Puanli_Giydirme_21.swf");
+        player.load("seu-jogo.swf"); // Substitua "seu-jogo.swf" pelo caminho do seu arquivo
+
+        // Verifique se há algum erro no console
+        player.onload = function() {
+            console.log("Jogo carregado com sucesso!");
+        }
+
+        player.onerror = function(error) {
+            console.log("Erro ao carregar o jogo:", error);
+        }
     </script>
 </body>
 </html>
