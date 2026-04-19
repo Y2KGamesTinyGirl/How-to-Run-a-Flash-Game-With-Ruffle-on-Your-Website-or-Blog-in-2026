@@ -42,10 +42,10 @@
       align-items: center;
     }
 
-    /* Style for like button */
+    /* Style for the like button and counter */
     #like-button {
       position: fixed;
-      left: 20px; /* Positioned on the left side of the screen */
+      right: 20px; /* Positioned on the right side of the screen */
       bottom: 20px; /* Distance from the bottom */
       background-color: transparent;
       border: none;
@@ -67,25 +67,26 @@
     }
 
     #like-button span {
-      font-size: 40px;  /* Larger size for heart */
-      margin-right: 10px; /* Add space between heart emoji and number */
+      font-size: 24px;  /* Smaller size for heart */
+      margin-right: 5px; /* Space between heart emoji and number */
     }
 
     /* Like counter with Y2K font style */
     #like-counter {
-      font-size: 24px;
+      font-size: 20px;
       color: #ff5f5f;
       font-family: 'Press Start 2P', cursive;  /* Y2K style font */
     }
 
-    /* Feminine font style for the text */
+    /* Feminine font style for the text beside the button */
     #love-text {
       font-family: 'Dancing Script', cursive;
-      font-size: 28px;
+      font-size: 24px;
       color: #ff5f5f;
       position: fixed;
-      left: 100px; /* Adjust position to the right of the like button */
-      bottom: 30px;
+      right: 80px; /* Place the text near the like button */
+      bottom: 30px; /* Slightly above the button */
+      z-index: 2; /* Make sure the text stays above the game */
     }
   </style>
 </head>
@@ -96,14 +97,14 @@
 
 <div id="game"></div>
 
+<!-- Feminine text "I Love this Game" beside the like button -->
+<div id="love-text">I Love this Game</div>
+
 <!-- Like button with heart emoji and counter -->
 <button id="like-button">
   <span>❤️</span> <!-- Heart emoji -->
   <span id="like-counter">0</span> <!-- Like counter -->
 </button>
-
-<!-- Feminine text "I Love this Game" -->
-<div id="love-text">I Love this Game</div>
 
 <script>
   window.RufflePlayer = window.RufflePlayer || {};
