@@ -1,42 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo Flash com Ruffle</title>
-    <!-- Link para o Ruffle via CDN -->
-    <script src="https://unpkg.com/ruffle-player@latest/dist/ruffle.js"></script>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        #flash-container {
-            width: 800px; /* Ajuste o tamanho conforme necessário */
-            height: 600px; /* Ajuste o tamanho conforme necessário */
-        }
-    </style>
-</head>
-<body>
-    <div id="flash-container">
-        <!-- Aqui o Ruffle irá carregar o Flash -->
-    </div>
-
-    <script>
-        // Inicializa o Ruffle e substitui o Flash embutido
-        const ruffle = window.RufflePlayer.newest();
-        const flashContainer = document.getElementById('flash-container');
-
-        // Cria o player Ruffle
-        const player = ruffle.createPlayer();
-        flashContainer.appendChild(player);
-
-        // Carrega o jogo Flash (.swf) que você fez upload
-        player.load('Puanli_Giydirme_21.swf');  // Substitua "jogo.swf" pelo nome correto do seu arquivo
-    </script>
-</body>
-</html>
+<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+<div id="flash-game"></div>
+<script>
+    const ruffle = window.RufflePlayer.newest();
+    const player = ruffle.createPlayer();
+    document.getElementById("flash-game").appendChild(player);
+    player.load("https://github.com/Y2KGamesTinyGirl/a/blob/main/Puanli_Giydirme_21.swf");
+</script>
