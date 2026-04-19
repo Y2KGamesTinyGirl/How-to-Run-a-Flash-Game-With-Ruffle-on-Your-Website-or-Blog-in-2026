@@ -83,16 +83,23 @@
             padding: 10px;
             border-radius: 10px;
             display: none; /* Inicialmente escondido */
-            transform: translateY(50px); /* Efeito de deslocamento para a animação */
-            opacity: 0;
-            transition: all 0.5s ease-in-out;
+            animation: slideUp 1s ease-out forwards; /* Animação */
         }
 
-        /* Animação da mensagem */
-        #message.show {
-            bottom: 20px; /* Vai para a parte inferior */
-            transform: translateY(0);
-            opacity: 1; /* Aparece suavemente */
+        /* Animação de deslizamento da parte inferior */
+        @keyframes slideUp {
+            0% {
+                bottom: -50px; /* Começa fora da tela */
+                opacity: 0;
+            }
+            50% {
+                bottom: 20px; /* Chega na parte inferior */
+                opacity: 1;
+            }
+            100% {
+                bottom: 20px;
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -128,11 +135,11 @@
             hibiscusCountElement.textContent = hibiscusCount; // Atualiza o contador
 
             // Exibe a mensagem com animação
-            messageElement.classList.add("show");
+            messageElement.style.display = "block"; // Torna a mensagem visível
 
             // Esconde a mensagem após 3 segundos
             setTimeout(() => {
-                messageElement.classList.remove("show");
+                messageElement.style.display = "none";
             }, 3000);
         });
     </script>
