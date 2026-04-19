@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Jogo Flash</title>
+    <title>My Flash Game with Ruffle</title>
+    <!-- Include Ruffle -->
+    <script src="https://unpkg.com/ruffle.js"></script>
 </head>
 <body>
-    <h1>Puanli_Giydirme_21.swf</h1>
-    <object data="seu-jogo.swf" type="application/x-shockwave-flash" width="800" height="600">
-        <param name="movie" value="seu-jogo.swf" />
-        Seu navegador não suporta Flash. 
-    </object>
+    <h1>My Flash Game with Ruffle</h1>
+    <!-- Create the object to load the SWF game -->
+    <div id="flash-game">
+        <script>
+            // Using Ruffle to load the SWF file
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            document.getElementById("flash-game").appendChild(player);
+            player.load("your-game.swf");  // Replace "your-game.swf" with the name of your SWF file
+        </script>
+    </div>
 </body>
 </html>
