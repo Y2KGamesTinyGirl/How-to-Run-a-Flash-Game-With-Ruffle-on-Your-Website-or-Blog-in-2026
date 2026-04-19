@@ -63,6 +63,13 @@
         #like-button span {
             font-size: 24px;
         }
+
+        /* Estilo do número de hibiscos */
+        #hibiscus-count {
+            font-weight: bold;
+            font-size: 24px;
+            color: #FF6347; /* Cor do hibisco */
+        }
     </style>
 </head>
 <body>
@@ -70,7 +77,7 @@
     <div id="game-container"></div>
 
     <button id="like-button">
-        <span>🌺 Curtiu?</span>
+        <span>Leave me a Hibiscus </span><span id="hibiscus-count">0</span>
     </button>
 
     <script>
@@ -84,10 +91,14 @@
             player.load("Puanli_Giydirme_21.swf");
         });
 
-        // Função para o botão de like
+        // Função para o botão de "Leave me a Hibiscus"
+        let hibiscusCount = 0;
         const likeButton = document.getElementById("like-button");
+        const hibiscusCountElement = document.getElementById("hibiscus-count");
+
         likeButton.addEventListener("click", () => {
-            alert("Você deu um like! 🌺");
+            hibiscusCount++;
+            hibiscusCountElement.textContent = hibiscusCount; // Atualiza o contador
         });
     </script>
 </body>
