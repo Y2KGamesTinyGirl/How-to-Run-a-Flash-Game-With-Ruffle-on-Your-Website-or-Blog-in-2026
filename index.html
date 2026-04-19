@@ -13,10 +13,12 @@
     <div id="flash-game">
         <script>
             // Using Ruffle to load the SWF file
-            const ruffle = window.RufflePlayer.newest();
-            const player = ruffle.createPlayer();
-            document.getElementById("flash-game").appendChild(player);
-            player.load("Puanli_Giydirme_21.swf");  // Replace "your-game.swf" with the name of your SWF file
+            window.addEventListener('load', function() {
+                const ruffle = window.RufflePlayer.newest();
+                const player = ruffle.createPlayer();
+                document.getElementById("flash-game").appendChild(player);
+                player.load("Puanli_Giydirme_21.swf");  // Replace this with your actual SWF file name
+            });
         </script>
     </div>
 </body>
