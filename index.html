@@ -71,21 +71,21 @@
       margin-right: 5px; /* Space between heart emoji and number */
     }
 
-    /* Like counter with Y2K font style */
+    /* Like counter with the same font style as the text */
     #like-counter {
-      font-size: 20px;
+      font-size: 24px;  /* Adjusted to match the font size of the phrase */
       color: #ff5f5f;
-      font-family: 'Press Start 2P', cursive;  /* Y2K style font */
+      font-family: 'Dancing Script', cursive;  /* Feminine font */
     }
 
-    /* Feminine font style for the text beside the button */
+    /* Feminine font style for the text above the like button */
     #love-text {
       font-family: 'Dancing Script', cursive;
       font-size: 24px;
       color: #ff5f5f;
       position: fixed;
       right: 80px; /* Place the text near the like button */
-      bottom: 30px; /* Slightly above the button */
+      bottom: 70px; /* Adjust the position to be above the like button */
       z-index: 2; /* Make sure the text stays above the game */
     }
   </style>
@@ -97,7 +97,7 @@
 
 <div id="game"></div>
 
-<!-- Feminine text "I Love this Game" beside the like button -->
+<!-- Feminine text "I Love this Game" above the like button -->
 <div id="love-text">I Love this Game</div>
 
 <!-- Like button with heart emoji and counter -->
