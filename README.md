@@ -1,2 +1,1 @@
-❤️ After trying to run a Flash game on my blog and not finding an easy and didactic way to learn how, I'm going to share how to do it after I figured out exactly how to do it.
-Please access the full tutorial here: https://github.com/Y2KGamesTinyGirl/How-to-Run-a-Flash-Game-With-Ruffle-on-Your-Website-or-Blog-in-2026/issues/1
+❤️ After trying to run a Flash game on my blog and not finding an easy and didactic way to learn how to do it, I'm going to share the method I finally found. Access the complete tutorial here: #1
