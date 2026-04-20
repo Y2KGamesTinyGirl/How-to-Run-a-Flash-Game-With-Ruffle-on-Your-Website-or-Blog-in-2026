@@ -3,9 +3,7 @@ After trying to run a Flash game on my blog and not finding an easy and didactic
 Tutorial 2026 
 
 Step 1: Create a repository on Github.
-
 Github is where you will store your files to make a functional Flash game page work.
-
 Create a Github account. After that, at the top of the page, click the + icon and then "New Repository". 
 
 Choose any name you want and keep the Visibility as Public. Click the green "Create Repository" button. 
@@ -15,6 +13,7 @@ On the next page, find "Quick Setup" and then "Get started by creating a new fil
 In "Create new file", you must create an Index File. This is the file where you will create the configuration for your game to work properly.
 
 Creating this file is easy. Here is the code you need. Just copy and paste:
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +63,7 @@ container.appendChild(player); //Append the player to the container
 player.load("YourGameHere.swf"); // Load the Flash game (SWF file) into the player 
 }); 
 
+  
   
 After that, at the top of the page, name the file exactly like this: "Index.html" (without the quotes).
 
