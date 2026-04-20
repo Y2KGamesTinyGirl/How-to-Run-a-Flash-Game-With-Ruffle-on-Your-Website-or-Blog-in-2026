@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<meta charset="UTF-8"> 
+<title></title> 
+
+<script src="https://unpkg.com/@ruffle-rs/ruffle/ruffle.js"></script> 
+
+<style> 
+body { 
+display: flex; 
+justify-content: center; 
+align-items: center; 
+height: 100vh; 
+margin: 0; 
+} 
+
+#game-container { 
+width: 800px; 
+height: 600px; 
+position: relative; 
+top: 100px; 
+left: 140px; 
+} 
+
+h1 { 
+position: absolute; 
+top: 90px; 
+text-align: center; 
+width: 100%; 
+color: #333; 
+} 
+</style>
+</head>
+<body> 
+<div id="game-container"></div> <!-- Container where the game will be loaded --> 
+
+<script> 
+window.addEventListener("load", () => { 
+const ruffle = window.RufflePlayer.newest(); // Create the newest version of the Ruffle player 
+const player = ruffle.createPlayer(); // Create the player to run the SWF file 
+
+const container = document.getElementById("game-container"); // Get the container where the game will be inserted 
+container.appendChild(player); //Append the player to the container 
+
+player.load("YourGameHere.swf"); // Load the Flash game (SWF file) into the player 
+});   
+  
+Learn step-by-step how to use this code and run the game on a Github page, and how to add it to your blog/website here: https://github.com/Y2KGamesTinyGirl/How-to-Run-a-Flash-Game-With-Ruffle-on-Your-Website-or-Blog-in-2026/issues/1
