@@ -49,7 +49,7 @@
             const container = document.getElementById("game-container");
             container.appendChild(player);
 
-            player.load("Puanli_Giydirme_21.swf");
+            player.load("YourGameHere");
         });
     </script>
 </body>
