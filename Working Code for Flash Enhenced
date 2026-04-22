@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="https://unpkg.com/@ruffle-rs/ruffle/ruffle.js"></script>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #FFC7EA; /* Background color of the page */
+        }
+
+        #game-container {
+            width: 550px;
+            height: 400px;
+            position: center;
+            top: 100px;
+            left: 100px;
+            border: 20px solid rgba(255, 165, 0, 0.7); /* Orange border with transparency */
+            border-radius: 55px; /* Rounded corners */
+            background: rgba(255, 165, 0, 0.1); /* Transparent background with an orange hue */
+            box-shadow: 0 0 55px 5px rgba(255, 165, 0, 0.8); /* Neon orange shadow effect */
+            backdrop-filter: blur(50px); /* Frosted glass effect */
+        }
+
+        h1 {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+            width: 100%;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container"></div>
+
+    <script>
+        window.addEventListener("load", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+
+            const container = document.getElementById("game-container");
+            container.appendChild(player);
+
+            player.load("Puanli_Giydirme_21.swf");
+        });
+    </script>
+</body>
+</html>
